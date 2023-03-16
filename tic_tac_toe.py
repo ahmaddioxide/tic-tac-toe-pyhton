@@ -48,6 +48,7 @@ class TicTacToe:
         # printing the board
         print(board_string)
 
+
     # creating a method to get the current player
 
     def get_current_player(self):
@@ -97,6 +98,8 @@ class TicTacToe:
         # creating a variable to store the current player
         self.current_player = 1
 
+
+
 # creating a function to play the game
 
 
@@ -109,6 +112,7 @@ def play_game():
     while not game.game_over():
         # displaying the board
         game.display_board()
+        game.display_board_next_states()
         # getting the current player
         current_player = game.get_current_player()
         # asking the current player for a move
@@ -119,6 +123,8 @@ def play_game():
         game.move(row, col)
     # displaying the board
     game.display_board()
+    game.display_board_next_states()
+
     # getting the winner
     winner = game.get_winner()
     # checking if there is a winner
@@ -143,3 +149,5 @@ play_game()
 
 # board = np.zeros((3, 3))
 # print(board)
+
+
