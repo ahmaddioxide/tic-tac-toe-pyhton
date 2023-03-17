@@ -27,21 +27,21 @@ def get_next_states(state, player): # state is the current state of the game, pl
             next_states.append(next_state) # add the next state to the next_states list
     return next_states # return the next_states list
 
-# Implement BFS
-def bfs(initial_state, goal_states): # initial_state is the current state of the game
-    visited = set() # visited stores the states that have been visited
-    queue = deque([(initial_state, "X"), (initial_state, "O")]) # queue stores the states that have not been visited
-    while queue: # while the queue is not empty
-        state, player = queue.popleft() # get the next state and player
+def dfs(initial_state, goal_states):
+    visited = set()
+    stack = deque([(initial_state, "X"), (initial_state, "O")])
+    while stack:
+        state, player = stack.pop()
         if state in visited:
             continue
-        visited.add(state) # add the state to the visited set
+        visited.add(state)
         if state in goal_states:
             return state
-        next_states = get_next_states(state, player) # get the next states from the current state and player
+        next_states = get_next_states(state, player)
         for next_state in next_states:
-            queue.append((next_state, "X" if player == "O" else "O")) # add the next state and player to the queue if the state has not been visited
+            stack.append((next_state, "X" if player == "O" else "O"))
     return None
+
 
 # Visualize the state space
 def visualize_state_space():
@@ -120,4 +120,4 @@ def play_game():
 if __name__ == "__main__":
     # visualize_state_space()
     visualize_bfs()
-    play_game()
+    # play_game()
